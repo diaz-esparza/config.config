@@ -2,24 +2,10 @@
 -- https://github.com/NvChad/ui/blob/v3.0/lua/nvconfig.lua
 -- Please read that file to know all available options :(
 
----@type ChadrcConfig
-local M = {}
+---@class VscodeDark : ThemeTable
+---@field polish_hl? table<string, table<string, Base46HLGroups>>
 
-M.base46 = {
-  theme = "vscode_dark",
-
-  changed_themes = {
-    vscode_dark = {},
-  },
-
-  -- hl_override = {
-  -- 	Comment = { italic = true },
-  -- 	["@comment"] = { italic = true },
-  -- },
-}
-
-local vscode_dark = M.base46.changed_themes.vscode_dark
-vscode_dark.base_30 = {
+local base_30 = {
   white = "#dee1e6",
   darker_black = "#1a1a1a",
   black = "#100F0F",
@@ -53,40 +39,55 @@ vscode_dark.base_30 = {
   folder_bg = "#7A8A92",
 }
 
-if vscode_dark then
-  vscode_dark.base_16 = {
+---@type VscodeDark
+local vscode_dark = {
+  base_30 = base_30,
+
+  base_16 = {
     --author of this template Tomas Iser, @tomasiser on github,
-    base00 = vscode_dark.base_30.black,
-    base01 = vscode_dark.base_30.black2,
-    base02 = vscode_dark.base_30.one_bg,
-    base03 = vscode_dark.base_30.grey,
-    base04 = vscode_dark.base_30.grey_fg,
-    base05 = vscode_dark.base_30.white,
+    base00 = base_30.black,
+    base01 = base_30.black2,
+    base02 = base_30.one_bg,
+    base03 = base_30.grey,
+    base04 = base_30.grey_fg,
+    base05 = base_30.white,
     base06 = "#b6bdca",
     base07 = "#c8ccd4",
-    base08 = vscode_dark.base_30.purple,
-    base09 = vscode_dark.base_30.nord_blue,
-    base0A = vscode_dark.base_30.green,
-    base0B = vscode_dark.base_30.orange,
-    base0C = vscode_dark.base_30.cyan,
-    base0D = vscode_dark.base_30.yellow,
-    base0E = vscode_dark.base_30.pink,
-    base0F = vscode_dark.base_30.white,
-  }
+    base08 = base_30.purple,
+    base09 = base_30.nord_blue,
+    base0A = base_30.green,
+    base0B = base_30.orange,
+    base0C = base_30.cyan,
+    base0D = base_30.yellow,
+    base0E = base_30.pink,
+    base0F = base_30.white,
+  },
 
-  vscode_dark.polish_hl = {
+  polish_hl = {
     treesitter = {
-      ["@variable.parameter"] = { fg = vscode_dark.base_30.blue },
-      ["@keyword"] = { fg = vscode_dark.base_30.teal },
-      ["@variable"] = { fg = vscode_dark.base_30.cyan },
-      ["@variable.member.key"] = { fg = vscode_dark.base_30.green },
-      ["@constructor"] = { fg = vscode_dark.base_30.green },
-      ["@keyword.return"] = { fg = vscode_dark.base_30.pink },
-      ["@keyword.import"] = { fg = vscode_dark.base_30.pink },
-      ["@keyword.function"] = { fg = vscode_dark.base_30.teal },
-      ["@keyword.repeat"] = { fg = vscode_dark.base_30.teal },
+      ["@variable.parameter"] = { fg = base_30.blue },
+      ["@keyword"] = { fg = base_30.teal },
+      ["@variable"] = { fg = base_30.cyan },
+      ["@variable.member.key"] = { fg = base_30.green },
+      ["@constructor"] = { fg = base_30.green },
+      ["@keyword.return"] = { fg = base_30.pink },
+      ["@keyword.import"] = { fg = base_30.pink },
+      ["@keyword.function"] = { fg = base_30.teal },
+      ["@keyword.repeat"] = { fg = base_30.teal },
     },
-  }
-end
+  },
+}
+
+---@type ChadrcConfig
+local M = {}
+
+M.base46 = {
+  theme = "vscode_dark",
+
+  ---@diagnostic disable-next-line: missing-fields
+  changed_themes = {
+    vscode_dark = vscode_dark,
+  },
+}
 
 return M

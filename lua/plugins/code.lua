@@ -1,12 +1,6 @@
 return {
-  -- {
-  --   "diaz-esparza/nvim-conda",
-  --   dependencies = { "nvim-lua/plenary.nvim" },
-  --   ft = { "python" },
-  -- },
-
   {
-    dir = vim.fn.stdpath "config" .. "/lua/custom_plugins/block-gaps.nvim",
+    dir = vim.fn.stdpath "config" .. "/local_plugins/block-gaps.nvim",
     name = "block-gaps",
     lazy = false,
     config = function()
@@ -15,9 +9,15 @@ return {
   },
 
   {
+    dir = vim.fn.stdpath "config" .. "/local_plugins/PascalCamel_snake.nvim",
+    name = "PascalCamel_snake",
+    lazy = false,
+  },
+
+  {
     "Vigemus/iron.nvim",
     ft = { "python", "r", "sh" },
-    config = function(plugins, opts)
+    config = function()
       require "configs.iron"
     end,
   },

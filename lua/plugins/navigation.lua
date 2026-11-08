@@ -28,16 +28,4 @@ return {
       },
     },
   },
-
-  -- {
-  --   "samodostal/image.nvim",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --   },
-  -- },
-
-  USE_IMAGE_NVIM and {
-    "3rd/image.nvim",
-    opts = {},
-  } or nil,
 }

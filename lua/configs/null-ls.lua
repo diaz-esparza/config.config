@@ -1,7 +1,6 @@
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local null_ls = require "null-ls"
 
-local opts = {
+return {
   sources = {
     -- sql
     null_ls.builtins.diagnostics.sqruff,
@@ -21,15 +20,4 @@ local opts = {
     --   extra_args = { "--style=Google" },
     -- },
   },
-
-  on_attach = function(client, bufnr)
-    if client.supports_method "textDocument/formatting" then
-      vim.api.nvim_clear_autocmds {
-        group = augroup,
-        buffer = bufnr,
-      }
-    end
-  end,
 }
-
-return opts

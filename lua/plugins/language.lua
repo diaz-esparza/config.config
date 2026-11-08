@@ -6,7 +6,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require "configs.lspconfig"
+      require "configs.lsp"
     end,
   },
   {
@@ -40,7 +40,6 @@ return {
         "bash",
         "javascript",
         "typescript",
-        "svelte",
         "caddy",
       },
     },

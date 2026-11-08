@@ -1,7 +1,7 @@
 local core = require "block_gaps.core"
 
 local M = { enabled = false }
-local timer = vim.uv.new_timer()
+local timer = assert(vim.uv.new_timer())
 
 local function each_loaded_buf(fn)
   for _, buf in ipairs(vim.api.nvim_list_bufs()) do
@@ -99,9 +99,11 @@ function M.bake()
   local above, below = {}, {}
   for _, mark in ipairs(marks) do
     local row, details = mark[2], mark[4]
-    local into = details.virt_lines_above and above or below
-    into[row] = into[row] or {}
-    vim.list_extend(into[row], virtual_text(details.virt_lines))
+    if details and details.virt_lines then
+      local into = details.virt_lines_above and above or below
+      into[row] = into[row] or {}
+      vim.list_extend(into[row], virtual_text(details.virt_lines))
+    end
   end
 
   local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
