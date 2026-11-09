@@ -22,3 +22,8 @@ dofile(vim.g.base46_cache .. "statusline")
 require "options"
 require "nvchad.autocmds"
 require "mappings"
+
+-- Machine-specific overrides (gitignored)
+if vim.uv.fs_stat(vim.fn.stdpath "config" .. "/lua/local.lua") then
+  require "local"
+end

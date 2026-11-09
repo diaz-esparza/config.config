@@ -1,3 +1,2 @@
-.RData
-.Rhistory
-.null-ls_*
+tmux/plugins/
+tmux/local.conf

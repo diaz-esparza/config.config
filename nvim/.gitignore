@@ -1,0 +1,4 @@
+.RData
+.Rhistory
+.null-ls_*
+lua/local.lua
